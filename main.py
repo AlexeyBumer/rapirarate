@@ -39,6 +39,7 @@ def send_message(text):
         requests.post(url, data={
             "chat_id": CHAT_ID,
             "text": text
+            "parse_mode": "HTML"
         }, timeout=10)
 
     except Exception as e:

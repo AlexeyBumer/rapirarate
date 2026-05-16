@@ -22,9 +22,9 @@ def get_prices():
                 ask = item.get("askPrice", "—")
                 bid = item.get("bidPrice", "—")
 
-                result += f"💱 {coin}\n"
-                result += f"USDT → {coin}: {ask}\n"
-                result += f"{coin} → USDT: {bid}\n\n"
+                result += f"💱 <b>{coin}</b>\n"
+                result += f"USDT → {coin}: <b>{ask}</b>\n"
+                result += f"{coin} → USDT: <b>{bid}</b>\n\n"
 
         return result
 

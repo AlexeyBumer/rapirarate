@@ -11,7 +11,7 @@ def get_prices():
         response = requests.get(URL, timeout=10)
         data = response.json()["data"]
 
-        result = "📊 Курсы (обновление):\n\n"
+        result = "📊 Курсы:\n\n"
 
         for item in data:
             symbol = item.get("symbol", "")
@@ -22,9 +22,9 @@ def get_prices():
                 ask = item.get("askPrice", "—")
                 bid = item.get("bidPrice", "—")
 
-                result += f"💱 <b>{coin}</b>\n"
-                result += f"USDT → {coin}: <b>{ask}</b>\n"
-                result += f"{coin} → USDT: <b>{bid}</b>\n\n"
+                result += f"❗️ {coin}\n"
+                result += f"USDT → {coin}: {ask}\n"
+                result += f"{coin} → USDT: {bid}\n\n"
 
         return result
 
@@ -36,10 +36,9 @@ def send_message(text):
     try:
         url = f"https://api.telegram.org/bot{TOKEN}/sendMessage"
 
-        requests.post(url, json={
+        requests.post(url, data={
             "chat_id": CHAT_ID,
             "text": text
-            "parse_mode": "HTML"
         }, timeout=10)
 
     except Exception as e:
